@@ -1,7 +1,7 @@
 # PowerShell Basics - Navigation and Basic Commands
 
 <!-- vscode-markdown-toc -->
-* 1. [ Basic Navigation and File Commands](#BasicNavigationandFileCommands)
+* 1. [Basic Navigation and File Commands](#BasicNavigationandFileCommands)
 	* 1.1. [`pwd` and `Get-Location`](#pwdandGet-Location)
 	* 1.2. [`cd` and `Set-Location`](#cdandSet-Location)
 	* 1.3. [`dir` and `Get-ChildItem`](#dirandGet-ChildItem)
@@ -9,7 +9,7 @@
 	* 1.5. [`Copy-Item`](#Copy-Item)
 	* 1.6. [`Move-Item`](#Move-Item)
 	* 1.7. [`Remove-Item`](#Remove-Item)
-* 2. [ `Get-Item`, `Test-Path`, and File Information](#Get-ItemTest-PathandFileInformation)
+* 2. [`Get-Item`, `Test-Path`, and File Information](#Get-ItemTest-PathandFileInformation)
 	* 2.1. [`Get-Item`](#Get-Item)
 	* 2.2. [`Test-Path`](#Test-Path)
 	* 2.3. [`Join-Path`](#Join-Path)
@@ -25,7 +25,7 @@ This article introduces basic navigation and commonly used PowerShell commands.
 **Hint:** Some commands may fail if your account does not have the required permissions on your Viona-managed machine.  
 If your course setup and permissions allow it, you can practice in a Windows 11 VM on Hyper-V.
 
-##  1. <a name='BasicNavigationandFileCommands'></a> Basic Navigation and File Commands
+##  1. <a name='BasicNavigationandFileCommands'></a>Basic Navigation and File Commands
 
 PowerShell cmdlets commonly use a verb-noun format. For example, `Get-Location` is a cmdlet, and `pwd` is one of its aliases.
 
@@ -169,7 +169,7 @@ Remove-Item "C:\OldScripts" -Recurse -WhatIf
 
 `-WhatIf` previews the action without performing it. After checking the target path and preview, remove `-WhatIf` only if you intend to perform the deletion. `Remove-Item` does not send deleted items to the Recycle Bin.
 
-##  2. <a name='Get-ItemTest-PathandFileInformation'></a> `Get-Item`, `Test-Path`, and File Information
+##  2. <a name='Get-ItemTest-PathandFileInformation'></a>`Get-Item`, `Test-Path`, and File Information
 
 ###  2.1. <a name='Get-Item'></a>`Get-Item`
 

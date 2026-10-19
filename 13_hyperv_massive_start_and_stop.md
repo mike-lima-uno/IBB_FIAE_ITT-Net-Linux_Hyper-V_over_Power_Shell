@@ -12,18 +12,19 @@
 
 *** The problem hier is that, as an IBB / Viona student you don't have the necessary permissions to run the script and possibly won't receive it. 
 
-*** As solution you can create your script file, ... BUT ... copy the list definition on PS, then the foreach-loop. It should good work! :)
+*** As solution you can create your own script file ..BUT... copy it on PS. It should good work! :)
 
-First set a list of virtual machines, the loop it.  
+First set a list of virtual machines, the loop it. You can use the ```Get-VM``` to have an overview. 
+
 **ATTENTION !!!** The last item in the list hasn't a comma. It raises error on PS.  
 
 **HINT**: the script under starts but not connect.
 
 ```powershell
 $vmlist = @(
-    "server01",
-    "client01",
-    "client02"
+    "ibbg_client01",
+    "ibby_server01",
+    "ibby_server02"
 )
 
 foreach ($vmname in $vmlist) {
@@ -31,7 +32,7 @@ foreach ($vmname in $vmlist) {
 
     if ($vm.State -ne "Running") {
         Start-VM -Name $vmname
-		Start-Process "vmconnect.exe" -ArgumentList "localhost", $vmname
+		# Start-Process "vmconnect.exe" -ArgumentList "localhost", $vmname
 		
 		# or the one-line-solution
         # Start-VM -Name $vmname; Start-Process "vmconnect.exe" -ArgumentList "localhost", $vmname
@@ -39,8 +40,16 @@ foreach ($vmname in $vmlist) {
         Write-Host "$vmname started."
 		# comment this line to avoid waiting time, but it's recommended to wait some seconds.
         Start-Sleep -Seconds 10
+    } else {
+        Write-Host "$vmname already running."
     }
 }
+
+# returns for me: 
+#
+# ibbg_client01 already running.
+# ibby_server01 already running.
+# ibby_server02 started.
 
 ```
 

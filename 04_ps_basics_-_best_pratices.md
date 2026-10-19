@@ -1,8 +1,6 @@
-
-# <a name='BestPractices'></a>Best Practices
+# Best Practices
 
 <!-- vscode-markdown-toc -->
-* [Best Practices](#BestPractices)
 
 <!-- vscode-markdown-toc-config
 	numbering=true

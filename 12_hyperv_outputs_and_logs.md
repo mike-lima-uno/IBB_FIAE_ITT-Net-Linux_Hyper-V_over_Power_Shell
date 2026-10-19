@@ -1,12 +1,12 @@
-# Hyper-V Basic Commands
+# Hyper-V over Power Shell - Outputs and logs
 
 <!-- vscode-markdown-toc -->
-* 1. [ Redirection and Output](#RedirectionandOutput)
-	* 1.1. [Special case: Export objects to CSV:](#Specialcase:ExportobjectstoCSV:)
-	* 1.2. [Special case XML: Export PowerShell objects in a format that preserves their structure:](#SpecialcaseXML:ExportPowerShellobjectsinaformatthatpreservestheirstructure:)
-* 2. [ Useful Output Commands](#UsefulOutputCommands)
+* 1. [Redirection and Output](#RedirectionandOutput)
+	* 1.1. [Special case: Export objects to CSV](#Specialcase:ExportobjectstoCSV)
+	* 1.2. [Special case XML: Export PowerShell objects in a format that preserves their structure](#SpecialcaseXML:ExportPowerShellobjectsinaformatthatpreservestheirstructure)
+* 2. [Useful Output Commands](#UsefulOutputCommands)
 * 3. [Error redirection](#Errorredirection)
-* 4. [ Error Handling](#ErrorHandling)
+* 4. [Error Handling](#ErrorHandling)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -14,44 +14,45 @@
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-##  1. <a name='RedirectionandOutput'></a> Redirection and Output
+##  1. <a name='RedirectionandOutput'></a>Redirection and Output
 
 PowerShell uses redirection operators to send output to files.
 
 ```powershell
-# Redirect standard output and overwrite a file:
-Get-VM > vms.txt
+# Redirect standard output and overwrite a file 
+# (the file is generated on the same folder you run it. I moved it to the folder outputs/)
+Get-VM > .\outputs\vm_list.txt
 
 # Append output to an existing file:
 Get-VM >> vms.txt
 
 # The `Out-File` command provides more control:
-Get-VM |
-    Out-File -FilePath "C:\Reports\vms.txt"
+Get-VM | Out-File -FilePath .\outputs\vm_outfile.txt
 ```
 
-###  1.1. <a name='Specialcase:ExportobjectstoCSV:'></a>Special case: Export objects to CSV:
+###  1.1. <a name='Specialcase:ExportobjectstoCSV'></a>Special case: Export objects to CSV
 
 ```powershell
-Get-VM |
+Get-VM | 
     Select-Object Name, State, Status |
-    Export-Csv -Path "C:\Reports\vms.csv" -NoTypeInformation
+    Export-Csv -Path .\outputs\vm_export.csv -NoTypeInformation
 ```
 
-###  1.2. <a name='SpecialcaseXML:ExportPowerShellobjectsinaformatthatpreservestheirstructure:'></a>Special case XML: Export PowerShell objects in a format that preserves their structure:
+###  1.2. <a name='SpecialcaseXML:ExportPowerShellobjectsinaformatthatpreservestheirstructure'></a>Special case XML: Export PowerShell objects in a format that preserves their structure
 
 ```powershell
+# returns a big long xml file
 Get-VM |
-    Export-Clixml -Path "C:\Reports\vms.xml"
+    Export-Clixml -Path .\outputs\vm_export.xml
 ```
 
 Read them again:
 
 ```powershell
-$VMData = Import-Clixml "C:\Reports\vms.xml"
+$VMData = Import-Clixml .\outputs\vm_export.xml
 ```
 
-##  2. <a name='UsefulOutputCommands'></a> Useful Output Commands
+##  2. <a name='UsefulOutputCommands'></a>Useful Output Commands - The famous print
 
 `Write-Host` displays text directly:
 
@@ -99,15 +100,9 @@ Send both normal output and errors to the same file:
 Get-Item "C:\DoesNotExist.txt" *> output.txt
 ```
 
-Suppress output:
-
-```powershell
-Remove-Item "C:\Temp\old.txt" -Force 2>$null
-```
-
 The variable `$null` represents no value.
 
-##  4. <a name='ErrorHandling'></a> Error Handling
+##  4. <a name='ErrorHandling'></a>Error Handling
 
 Use `try`, `catch`, and `finally` to handle errors:
 
@@ -123,6 +118,7 @@ catch {
 finally {
     Write-Host "Operation finished."
 }
+# An error occurred: Von Hyper-V wurde kein virtueller Computer mit dem Namen "client01" gefunden.
 ```
 
 The `-ErrorAction Stop` parameter converts a non-terminating error into an error that can be caught by `catch`.
@@ -136,4 +132,5 @@ try {
 catch {
     Write-Error "Could not start the VM: $($_.Exception.Message)"
 }
+# Could not start the VM: Von Hyper-V wurde kein virtueller Computer mit dem Namen "client01" gefunden.
 ```

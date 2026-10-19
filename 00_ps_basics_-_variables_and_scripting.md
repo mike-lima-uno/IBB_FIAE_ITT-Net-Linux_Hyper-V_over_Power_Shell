@@ -2,12 +2,12 @@
 
 <!-- vscode-markdown-toc -->
 * 1. [Introduction to PowerShell Scripting - What is it?](#IntroductiontoPowerShellScripting-Whatisit)
-* 2. [ Variables in PowerShell](#VariablesinPowerShell)
+* 2. [Variables in PowerShell](#VariablesinPowerShell)
 	* 2.1. [Variable types](#Variabletypes)
 	* 2.2. [Arrays](#Arrays)
-* 3. [ Creating and Running Scripts](#CreatingandRunningScripts)
+* 3. [Creating and Running Scripts](#CreatingandRunningScripts)
 	* 3.1. [Parameters](#Parameters)
-* 4. [ Comments](#Comments)
+* 4. [Comments](#Comments)
 * 5. [Execution Policy](#ExecutionPolicy)
 	* 5.1. [Practicing in a Windows 11 VM](#PracticinginaWindows11VM)
 	* 5.2. [Running Commands in the Console](#RunningCommandsintheConsole)
@@ -43,7 +43,7 @@ PowerShell is a command-line shell and scripting language designed for:
 Unlike traditional command prompts, PowerShell works primarily with **objects**, not just text.  
 This makes it possible to **retrieve**, **filter**, **modify**, and **organize** system information efficiently.
 
-##  2. <a name='VariablesinPowerShell'></a> Variables in PowerShell
+##  2. <a name='VariablesinPowerShell'></a>Variables in PowerShell
 
 PowerShell variable names begin with the dollar sign (`$`). PowerShell is dynamically typed; it determines a variable's type from the value assigned to it.
 You can display a variable by entering its name or use it in an expression:
@@ -109,7 +109,7 @@ foreach ($VMName in $VMs) {
 # Processing Ubuntu-Server
 ```
 
-##  3. <a name='CreatingandRunningScripts'></a> Creating and Running Scripts
+##  3. <a name='CreatingandRunningScripts'></a>Creating and Running Scripts
 
 A script is a text file. PowerShell scripts use the `.ps1` extension (pronounced “P-S-one”).
 A simple `create_vm.ps1` script might look like this:
@@ -129,7 +129,7 @@ Save the file as `create_vm.ps1`, then run it from PowerShell:
 .\create_vm.ps1
 ```
 
-### 3.1. <a name='Parameters'></a> Parameters
+###  3.1. <a name='Parameters'></a>Parameters
 
 Scripts become more reusable when they accept parameters.
 
@@ -155,7 +155,7 @@ The default value is used if memory is not specified:
 .\create-vm.ps1 -VMName "client01"
 ```
 
-##  4. <a name='Comments'></a> Comments
+##  4. <a name='Comments'></a>Comments
 
 A single-line comment begins with `#`. For a block comment, use `<#` and `#>`:
 

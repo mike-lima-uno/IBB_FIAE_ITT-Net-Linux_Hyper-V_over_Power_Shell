@@ -1,8 +1,7 @@
-# Hyper-V over Power Shell - Start and Stop
+# Hyper-V over Power Shell - Create a VM
 
 <!-- vscode-markdown-toc -->
-* 1. [Commands](#Commands)
-	* 1.1. [Creating ONE virtual machine](#CreatingONEvirtualmachine)
+	* 1. [Creating ONE virtual machine](#CreatingONEvirtualmachine)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -16,19 +15,13 @@ Hier you can do the same things, we normally configure over Hyper-V GUI, but thr
 This file is not intended to cover all details about scripting in Power Shell
 It's assumed that the reader has some familiarity with basic comands
 
-##  1. <a name='Commands'></a>Commands
-
-template for script (use copy + paste)
-```powershell
-```
-
 *** Always STOP THE VIRTUAL MACHINE before any changes  
 
 *** Some pratices that make the things easier, not necessarily better or safer  
 1. Name the virtual disk with the same name as the virtual machine e.g. client01 and client01.vhdx 
 2. Use a variable. see file "hyperv_01..." for more details.  
 
-###  1.1. <a name='CreatingONEvirtualmachine'></a>Creating ONE virtual machine
+###  1. <a name='CreatingONEvirtualmachine'></a>Creating ONE virtual machine
 
 *** HINT: I'll assume you are conformtable using variables within Power Shell 
 
@@ -104,7 +97,6 @@ Then start and show the virtual machine
 Start-VM -Name $VMName
 Start-Process "vmconnect.exe" -ArgumentList "localhost", $VMName
 ```
-
 
 Create a dynamic 20 GB virtual disk:
 

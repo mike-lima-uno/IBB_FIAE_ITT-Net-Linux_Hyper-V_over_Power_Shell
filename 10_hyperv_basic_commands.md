@@ -1,7 +1,7 @@
-# Hyper-V Basic Commands
+# Hyper-V over Power Shell - Basic Commands
 
 <!-- vscode-markdown-toc -->
-* 1. [ Listing and getting Vms](#ListingandgettingVms)
+* 1. [Listing and getting Vms](#ListingandgettingVms)
 * 2. [Listing and getting virtual disks connected to VMs:](#ListingandgettingvirtualdisksconnectedtoVMs:)
 * 3. [Starting and stopping VMs](#StartingandstoppingVMs)
 * 4. [Connecting to a VM](#ConnectingtoaVM)
@@ -14,7 +14,7 @@
 
 Here we start specificaly with commands that interact directly with virtual machines doing the same you can do manualy on Hyper-V.
 
-##  1. <a name='ListingandgettingVms'></a> Listing and getting Vms
+##  1. <a name='ListingandgettingVms'></a>Listing and getting Vms
 
 PowerShell includes commands for managing Hyper-V.
 

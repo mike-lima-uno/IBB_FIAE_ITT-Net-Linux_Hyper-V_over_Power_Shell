@@ -1,10 +1,10 @@
-# Hyper-V Basics - Useful Commands
+# Hyper-V over Power Shell - Useful Commands
 
 <!-- vscode-markdown-toc -->
-* 1. [ The Pipeline](#ThePipeline)
-	* 1.1. [Filtering with `Where-Object`](#FilteringwithWhere-Object)
+* 1. [The Pipeline](#ThePipeline)
+	* 1.1. [More about Filtering with `Where-Object`](#MoreaboutFilteringwithWhere-Object)
 	* 1.2. [Selecting properties](#Selectingproperties)
-	* 1.3. [Sorting](#Sorting)
+	* 1.3. [Sorting the result of a query](#Sortingtheresultofaquery)
 	* 1.4. [Measuring and counting](#Measuringandcounting)
 
 <!-- vscode-markdown-toc-config
@@ -13,12 +13,20 @@
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-##  1. <a name='ThePipeline'></a> The Pipeline
+##  1. <a name='ThePipeline'></a>The Pipeline
 
 The pipeline is one of PowerShell’s most important features. It sends the output of one command to another command using the pipe character `|`.
 
 ```powershell
 Get-VM | Where-Object { $_.State -eq "Running" }
+
+# it returns for me:
+# 
+# Name                    State   CPUUsage(%) MemoryAssigned(M) Uptime             Status           Version
+# ----                    -----   ----------- ----------------- ------             ------           -------
+# ibbfirewall_opnsense    Running 0           4096              1.11:18:55.3790000 Normaler Betrieb 12.0   
+# ibbg_client01           Running 0           4096              1.11:18:55.3420000 Normaler Betrieb 12.0  
+# ... 
 ```
 
 This means:
@@ -28,7 +36,7 @@ This means:
 
 The special variable `$_` represents the current object in the pipeline.
 
-###  1.1. <a name='FilteringwithWhere-Object'></a>More about Filtering with `Where-Object`
+###  1.1. <a name='MoreaboutFilteringwithWhere-Object'></a>More about Filtering with `Where-Object`
 
 ```powershell
 Get-ChildItem -Filter *.vhdx |
@@ -61,7 +69,7 @@ Get-ChildItem -Filter *.vhdx |
         @{Name="SizeGB"; Expression={[math]::Round($_.Length / 1GB, 2)}}
 ```
 
-###  1.3. <a name='Sorting'></a>Sorting the result of a query
+###  1.3. <a name='Sortingtheresultofaquery'></a>Sorting the result of a query
 
 ```powershell
 Get-VM |

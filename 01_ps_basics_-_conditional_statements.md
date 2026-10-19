@@ -1,8 +1,8 @@
 # PowerShell Basics - Variables and Scripting
 
 <!-- vscode-markdown-toc -->
-* 1. [ Conditional Statements](#ConditionalStatements)
-* 2. [ Loops](#Loops)
+* 1. [Conditional Statements](#ConditionalStatements)
+* 2. [Loops](#Loops)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -10,7 +10,7 @@
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-##  1. <a name='ConditionalStatements'></a> Conditional Statements
+##  1. <a name='ConditionalStatements'></a>Conditional Statements
 
 Use `if` to make decisions:
 
@@ -50,7 +50,7 @@ if ($RAM -ge 4096) {
 }
 ```
 
-##  2. <a name='Loops'></a> Loops
+##  2. <a name='Loops'></a>Loops
 
 A `foreach` loop processes a collection:
 
